@@ -55,7 +55,7 @@ def save_cleaned_file(base_dir, file_name, cleaned_svg_dom):
 		with open(os.path.join(base_dir, file_name + ".bkup"), 'wb') as out_file:
 			out_file.write(in_file.read())
 	#override the file
-	with open(os.path.join(base_dir, file_name + ".cleaned"), 'wb') as out_file:
+	with open(os.path.join(base_dir, file_name), 'wb') as out_file:
 		out_file.write(pretty_xml_str)
 
 def start_cleaning():
