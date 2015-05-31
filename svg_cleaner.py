@@ -1,7 +1,11 @@
+import os
 from xml.dom import minidom
 import pdb
 def get_files_list():
-	return ['telephone5.svg'];
+	return os.listdir(os.path.dirname(os.path.realpath(__file__)))
+
+def filter_files_list(files_list):
+	return [f for f in files_list if f[-3:] == 'svg']
 
 def remove_empty_g_tags(svg_content):
 	for node in svg_content.getElementsByTagName('g'):
@@ -55,6 +59,8 @@ def save_cleaned_file(file_name, cleaned_svg_dom):
 
 def start_cleaning():
 	files_list = get_files_list()
+	files_list = filter_files_list(files_list)
+	print files_list
 	for file_name in files_list:
 		cleaned_svg_dom = clean_svg_file(file_name)
 		print cleaned_svg_dom.getElementsByTagName('g')
