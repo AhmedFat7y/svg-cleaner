@@ -1,8 +1,9 @@
 import os
-from xml.dom import minidom
 import pdb
+import sys
+from xml.dom import minidom
+
 def get_files_list(base_dir):
-	print base_dir
 	return os.listdir(base_dir)
 
 def filter_files_list(files_list):
@@ -59,7 +60,8 @@ def save_cleaned_file(base_dir, file_name, cleaned_svg_dom):
 		out_file.write(pretty_xml_str)
 
 def start_cleaning():
-	base_dir = os.path.dirname(os.path.realpath(__file__))
+	base_dir = sys.argv[1]
+	print base_dir
 	files_list = get_files_list(base_dir)
 	files_list = filter_files_list(files_list)
 	print files_list
